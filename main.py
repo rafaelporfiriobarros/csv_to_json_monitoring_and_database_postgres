@@ -101,9 +101,10 @@ class DataUpdater:
 
 
 # Inicializa as classes
-db = Database(DB_CONFIG)
-file_manager = FileManager(JSON_FILE)
-data_updater = DataUpdater(db, file_manager)
+if __name__ == "__main__":
+    db = Database(DB_CONFIG)
+    file_manager = FileManager(JSON_FILE)
+    data_updater = DataUpdater(db, file_manager)
 
-# Inicia o processo de atualização do banco de dados quando houver alterações no arquivo JSON
-data_updater.update_database_if_file_changed()
+    # Inicia o processo de atualização do banco de dados quando houver alterações no arquivo JSON
+    data_updater.update_database_if_file_changed()
