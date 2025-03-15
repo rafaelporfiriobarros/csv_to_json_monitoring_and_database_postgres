@@ -30,12 +30,12 @@ class CSVtoJSONHandler(FileSystemEventHandler):
     def convert_csv_to_json(self):
         try:
             # Detecta a codificação do arquivo para evitar problemas
-            with open("dados_ficticios.csv", "rb") as f:
+            with open(dados_ficticios, "rb") as f:
                 result = chardet.detect(f.read())
                 encoding_detected = result["encoding"] if result["encoding"] else "utf-8"
 
             # Lê o arquivo CSV com a codificação detectada
-            df = pd.read_csv("dados_ficticios.csv", encoding=encoding_detected, sep=";")
+            df = pd.read_csv(dados_ficticios, encoding=encoding_detected, sep=";")
 
             # Remover colunas "Unnamed"
             df = df.loc[:, ~df.columns.str.contains('^Unnamed')]
