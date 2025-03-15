@@ -6,6 +6,8 @@ import chardet
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
 
+dados_ficticios = "dados_ficticios.csv"
+
 class CSVtoJSONHandler(FileSystemEventHandler):
     def __init__(self):
         self.last_processed_time = 0  # Track the last processed time to avoid duplicate processing
@@ -15,7 +17,7 @@ class CSVtoJSONHandler(FileSystemEventHandler):
             return
 
         # Verifica se o arquivo modificado é o "dados_ficticios.csv"
-        if os.path.basename(event.src_path) == "dados_ficticios.csv":
+        if os.path.basename(event.src_path) == dados_ficticios:
             current_time = time.time()
             file_modified_time = os.path.getmtime(event.src_path)
             
